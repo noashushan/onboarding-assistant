@@ -61,7 +61,7 @@ streamlit run app.py
 The main interface for selecting the employee's role, department, and experience level.
 
 ### 2. Generated Onboarding Plan
-![Generated Onboarding Plan](2.png)
+![Generated Onboarding Plan](image2.png)
 
 A task-based onboarding plan with priorities, ownership, instructions, and progress tracking.
 
