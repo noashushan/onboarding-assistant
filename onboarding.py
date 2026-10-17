@@ -172,6 +172,7 @@ def generate_onboarding_plan(job_title, department,experience_level):
                 ],
                 "expected_outcome": "The employee completes a first task with guidance and identifies knowledge gaps."
             },
+            
             {
                 "phase": "Days 8-30",
                 "task": "Review progress and remaining questions",
@@ -185,7 +186,22 @@ def generate_onboarding_plan(job_title, department,experience_level):
                 "expected_outcome": "Progress and next steps are agreed with the employee."
             }
         ]
-        
+    if role == "marketing specialist":
+        tasks.append({
+            "phase": "Week 2",
+            "task": "Explore the company's brand guidelines",
+            "priority": "Low",
+            "owner": "New employee",
+            "instructions": [
+                "Review the company's brand guidelines and visual identity.",
+                "Explore examples of previous marketing materials.",
+                "Note any questions about tone of voice or brand consistency."
+            ],
+            "expected_outcome": (
+                "The employee understands the basic brand guidelines "
+                "and knows where to find relevant resources."
+            )
+        })    
     # Adapt onboarding tasks to the employee's experience level
     experience_instructions = {
         "Junior": (
@@ -197,8 +213,8 @@ def generate_onboarding_plan(job_title, department,experience_level):
             "independently and which need review."
             ),
         "Senior": (
-            "Identify opportunities to take ownership and recommend "
-            "process improvements."
+            "Take ownership of the task, identify process improvements, "
+            "and raise significant risks when necessary."
             )
         }
     independence_levels = {
@@ -207,27 +223,24 @@ def generate_onboarding_plan(job_title, department,experience_level):
         "Senior": "Independent"
     }
 
+    for task in tasks:
+        task["independence_level"] = independence_levels.get(
+            experience_level, "Semi-independent"
+        )
     instruction = experience_instructions.get(experience_level)
 
     if instruction:
-        for task in tasks:
-            task["instructions"].append(instruction)
-            task["independence_level"] = independence_levels.get(
-                experience_level, "Semi-independent"
-                )
-    if experience_level == "Senior":
-        for task in tasks:
-            if task["task"] == "Complete a guided work task":
-                task["task"] = "Complete an independent work task"
+            if instruction:
+                for task in tasks:
+                    task["instructions"].append(instruction)
+                    task["independence_level"] = independence_levels.get(
+                    experience_level, "Semi-independent"
+                    )
 
-                task["instructions"][2] = (
-                    "Complete the task independently and document any blockers."
+            if experience_level == "Senior":
+                task["instructions"].append(
+                    "Identify opportunities to improve the existing process."
                 )
-
-                task["expected_outcome"] = (
-                    "The employee completes the task independently "
-                    "and identifies opportunities for improvement."
-                )    
 
     if dept == "operations":
         tasks.append({
@@ -240,7 +253,27 @@ def generate_onboarding_plan(job_title, department,experience_level):
                 "Document its main steps and responsible people.",
                 "Identify one possible improvement."
             ],
-            "expected_outcome": "A process document is created and one improvement opportunity is identified."
+            "expected_outcome": (
+                "A process document is created and one improvement "
+                "opportunity is identified."
+            )
+        })
+
+    elif dept == "marketing":
+        tasks.append({
+            "phase": "Week 1",
+            "task": "Review current marketing activities",
+            "priority": "Medium",
+            "owner": "New employee",
+            "instructions": [
+                "Review recent marketing campaigns and materials.",
+                "Identify the target audience and main communication channels.",
+                "Document questions about current marketing priorities."
+            ],
+            "expected_outcome": (
+                "The employee understands the current marketing activities "
+                "and documents initial questions."
+            )
         })
 
     return tasks
