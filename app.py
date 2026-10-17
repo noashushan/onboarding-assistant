@@ -200,11 +200,13 @@ elif st.session_state.step == 3:
     st.warning("Draft plan — manager review is recommended.")
 
     total = len(tasks)
+
     completed_count = sum(
-        st.session_state.completed_tasks.get(i, False)
+        st.session_state.get(f"task_completed_{i}", False)
         for i in range(1, total + 1)
-    )
-    progress = completed_count / total if total else 0
+        )
+
+progress = completed_count / total if total else 0
 
     st.subheader("Onboarding progress")
     st.progress(progress)
