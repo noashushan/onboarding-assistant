@@ -53,6 +53,22 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
+## Screenshots
+
+### 1. Application Interface
+![Application Interface](1.png)
+
+The main interface for selecting the employee's role, department, and experience level.
+
+### 2. Generated Onboarding Plan
+![Generated Onboarding Plan](2.png)
+
+A task-based onboarding plan with priorities, ownership, instructions, and progress tracking.
+
+### 3. Excel Export
+![Excel Export](3.png)
+An Excel report with task details, status dropdowns, and conditional formatting.
+
 ## Author
 
 **Noa Shushan**
