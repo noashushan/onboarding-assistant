@@ -56,7 +56,7 @@ streamlit run app.py
 ## Screenshots
 
 ### 1. Application Interface
-![Application Interface](1.png)
+![Application Interface](image.png)
 
 The main interface for selecting the employee's role, department, and experience level.
 
