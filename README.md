@@ -2,7 +2,7 @@
 
 An interactive Python application that generates structured employee onboarding plans based on job role, department, and experience level.
 
-**[Launch the Live App](https://noa-onboarding-assistant.streamlit.app)**
+**[Launch the Live App](https://noa-on-boarding-assistant.streamlit.app/)**
 
 ## Overview
 
